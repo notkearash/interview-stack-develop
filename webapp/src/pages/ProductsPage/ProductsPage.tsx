@@ -36,7 +36,7 @@ const ProductsPage = () => {
     }, []);
 
     useEffect(() => {
-        fetch('http://0.0.0.0:8004/api/products')
+        fetch('/api/products/')
             .then((response) => response.json())
             .then((data) => setProducts(data))
             .catch((error) => console.error('Error fetching products:', error));
@@ -54,7 +54,7 @@ const ProductsPage = () => {
 
     const deleteHandler = async (id: number) => {
         try {
-            const response = await fetch(`http://0.0.0.0:8004/api/products/${id}`, {
+            const response = await fetch(`/api/products/${id}`, {
                 method: "DELETE",
             });
             if (response.ok) {

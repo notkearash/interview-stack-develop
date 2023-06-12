@@ -34,7 +34,7 @@ app.use(express.json());
 app.use('/static', express.static('./static'));
 app.use(morgan('< :method > :url :status :res[content-length] - :response-time ms'));
 
-app.use('/api/products', productsRouter(sequelize));
+app.use('/api/products/', productsRouter(sequelize));
 app.use((req: Request, res: Response): Response => res.status(404).json({ message: "404 not found" }));
 
 app.listen(process.env.LPORT, (): void => console.log(`[ OK ] Listening on ${process.env.LPORT}`));

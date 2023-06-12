@@ -38,7 +38,7 @@ app.use((0, cors_1.default)());
 app.use(express_1.default.json());
 app.use('/static', express_1.default.static('./static'));
 app.use((0, morgan_1.default)('< :method > :url :status :res[content-length] - :response-time ms'));
-app.use('/api/products', (0, products_routes_1.default)(exports.sequelize));
+app.use('/api/products/', (0, products_routes_1.default)(exports.sequelize));
 app.use((req, res) => res.status(404).json({ message: "404 not found" }));
 app.listen(process.env.LPORT, () => console.log(`[ OK ] Listening on ${process.env.LPORT}`));
 //# sourceMappingURL=server.js.map

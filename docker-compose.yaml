@@ -14,6 +14,7 @@ services:
     depends_on:
       - webapp
       - api.orders
+      - api.products
 
   webapp:
     image: webapp:latest
@@ -21,6 +22,7 @@ services:
     ports:
       - 3000:3000
     depends_on:
+      - api.products
       - api.orders
       - mariadb
     build:
