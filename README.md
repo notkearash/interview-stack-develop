@@ -8,6 +8,7 @@ The application is comprised of 4 parts
 2. api.orders -> Backend for the applicaiton (written in flask)
 3. nginx -> The proxy for the requests
 4. db -> mariadb
+5. api.products -> Backend for the applicaiton (written in typescript)
 
 ## Requirements
 
