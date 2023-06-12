@@ -11,7 +11,7 @@ ENV PATH /api.products/node_modules/.bin:$PATH
 COPY package*.json ./
 
 # Install project dependencies
-RUN npm install
+RUN npm install --no-package-lock --no-audit
 
 # Copy the rest of the application code to the working directory
 COPY . .
