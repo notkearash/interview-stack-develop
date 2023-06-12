@@ -1,7 +1,7 @@
 import path from 'path';
 import multer from "multer";
 import { Request, Response } from "express";
-import { Sequelize, WhereOptions } from "sequelize";
+import { Order, Sequelize, WhereOptions } from "sequelize";
 
 import productModel from "../models/Product";
 
@@ -17,7 +17,8 @@ export default (sequelize: Sequelize) => {
 
     const listAllProducts = async (req: Request, res: Response) => {
         try {
-            const products = await Product.findAll();
+            const orderCriteria: Order = [['ProductID', 'DESC']];
+            const products = await Product.findAll({ order: orderCriteria });
             res.json(products);
         } catch (error) {
             console.error(error);

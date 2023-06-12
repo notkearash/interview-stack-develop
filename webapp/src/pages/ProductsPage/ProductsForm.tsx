@@ -7,8 +7,6 @@ const ProductForm: React.FC = () => {
     const [modalOpen, setModalOpen] = useState(false);
 
     const handleFormSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-
         if (!image) {
             console.error('No image selected');
             return;
@@ -20,7 +18,7 @@ const ProductForm: React.FC = () => {
         formData.append('ProductPhotoURL', image);
 
         try {
-            const response = await fetch('/api/products', {
+            const response = await fetch('/api/products/', {
                 method: 'POST',
                 body: formData,
             });
@@ -45,7 +43,7 @@ const ProductForm: React.FC = () => {
     return (
         <div>
             <button
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded m-8"
+                className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded m-8 mb-10"
                 onClick={() => setModalOpen(true)}
             >
                 Create Product

@@ -19,7 +19,8 @@ exports.default = (sequelize) => {
     const Product = (0, Product_1.default)(sequelize);
     const listAllProducts = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         try {
-            const products = yield Product.findAll();
+            const orderCriteria = [['ProductID', 'DESC']];
+            const products = yield Product.findAll({ order: orderCriteria });
             res.json(products);
         }
         catch (error) {

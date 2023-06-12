@@ -18,7 +18,7 @@ const express_1 = __importDefault(require("express"));
 const products_routes_1 = __importDefault(require("./routes/products.routes"));
 const sequelize_1 = require("sequelize");
 const cors_1 = __importDefault(require("cors"));
-// require('dotenv').config();
+require('dotenv').config();
 const app = (0, express_1.default)();
 exports.sequelize = new sequelize_1.Sequelize(process.env.MYSQL_DATABASE, process.env.MYSQL_USER, process.env.MYSQL_PASSWORD, {
     host: process.env.MYSQL_HOST,

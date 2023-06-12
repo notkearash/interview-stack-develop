@@ -3,7 +3,7 @@ import express, { Request, Response } from 'express';
 import productsRouter from './routes/products.routes';
 import { Sequelize } from 'sequelize';
 import cors from 'cors';
-// require('dotenv').config();
+require('dotenv').config();
 
 const app = express();
 

@@ -74,7 +74,9 @@ const ProductsPage = () => {
         for (let i = 0; i < rows; i++) {
             const startIndex = i * 3;
             const endIndex = startIndex + 3;
-            const row = products.slice(startIndex, endIndex);
+            const activeCards = products.filter((product) => product.ProductStatus === 'Active');
+            const row = activeCards.slice(startIndex, endIndex);
+
 
             rowsToRender.push(
                 <div className="lg:flex lg:mb-8 sm:mb-0" key={i}>
@@ -93,30 +95,32 @@ const ProductsPage = () => {
 
 
 
-                                    <div className="px-6 py-4 items-center">
+                                    <div className="px-6 py-4">
                                         {(showAddToCart === startIndex + index || isMobile) && (
                                             <span className="inline-block bg-gray-900 rounded-full px-3 py-1 text-sm font-semibold text-gray-200 mr-2 mb-2 w-full text-center transition-all">
                                                 Click on image to add to cart
                                             </span>
                                         )}
                                         <div className="font-bold text-center text-xl mb-2">{product.ProductName}</div>
-                                        <span className="hover:text-gray-200 hover:bg-gray-700 transition-all cursor-pointer inline-block bg-gray-200 rounded-lg px-3 py-3 text-lg font-semibold text-green-800 mr-2 mb-2">
-                                            Active
-                                        </span>
-                                        <span
-                                            className="hover:text-gray-200 hover:bg-gray-700 transition-all cursor-pointer inline-block bg-red-700 rounded-lg px-3 py-3 text-lg font-semibold text-red-200 mr-2 mb-2"
-                                            onClick={() => deleteHandler(product.ProductID)}
-                                        >
-                                            Delete
-                                        </span>
+                                        <div className="flex flex-row justify-center items-center">
+                                            <span className="w-1/2 text-center hover:text-gray-200 hover:bg-gray-700 transition-all cursor-pointer inline-block bg-gray-200 rounded-lg px-3 py-3 text-lg font-semibold text-green-800 mr-2 mb-2">
+                                                Active
+                                            </span>
+                                            <span
+                                                className="w-1/2 text-center hover:text-gray-200 hover:bg-gray-700 transition-all cursor-pointer inline-block bg-red-700 rounded-lg px-3 py-3 text-lg font-semibold text-red-200 mr-2 mb-2"
+                                                onClick={() => deleteHandler(product.ProductID)}
+                                            >
+                                                Delete
+                                            </span>
+                                        </div>
                                     </div>
-                                    <div className="px-6 pb-2">
-                                        <span className="hover:text-gray-200 hover:bg-gray-700 transition-all cursor-pointer inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Learn more</span>
+                                    <div className="px-6 pb-2 ">
+                                        <span className=" w-full text-center hover:text-gray-200 hover:bg-gray-700 transition-all cursor-pointer inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Learn more</span>
                                     </div>
                                 </div>
                             )
                         }
-                        else return (<></>);
+                        else return null;
                     })}
                 </div>
             );
